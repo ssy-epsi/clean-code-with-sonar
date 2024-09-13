@@ -37,7 +37,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           mvn sonar:sonar \
-            -Dsonar.projectKey=clean-code-with-sonar \
+            -Dsonar.projectKey=ssy-epsi_clean-code-with-sonar \
             -Dsonar.organization=ssy-epsi \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
@@ -45,5 +45,5 @@ jobs:
       - name: Check the Quality Gate status
         run: |
           curl -s -u ${{ secrets.SONAR_TOKEN }}: \
-            "https://sonarcloud.io/api/qualitygates/project_status?projectKey=clean-code-with-sonar" \
+            "https://sonarcloud.io/api/qualitygates/project_status?projectKey=ssy-epsi_clean-code-with-sonar" \
             | grep -q '"status":"ERROR"' && echo "Quality Gate failed" && exit 1 || echo "Quality Gate passed"
